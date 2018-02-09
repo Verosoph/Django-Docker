@@ -37,3 +37,5 @@ services:
 ```
 ## 4. Start the Django App
 $ docker-compose up
+
+## 5. Debugging
