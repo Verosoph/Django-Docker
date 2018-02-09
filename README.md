@@ -45,9 +45,10 @@ maybe you get an error message regarding the host, then you have to add the host
 
 #### to migrate the database on the server
 you can use the following command:
-    $ docker-compose exec web python manage.py makemigrations 
-    $ docker-compose exec web python manage.py migrate
-
+```
+$ docker-compose exec web python manage.py makemigrations 
+$ docker-compose exec web python manage.py migrate
+```
 or:
 
 Using an entrypoint script
@@ -57,8 +58,9 @@ Dockerfile:
 ```python
 COPY entrypoint.sh /entrypoint.sh
 RUN chmod +x /entrypoint.sh
+```
 entrypoint.sh:
-
+```python
 #!/bin/sh
 python manage.py makemigrations
 python manage.py migrate
