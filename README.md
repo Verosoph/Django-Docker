@@ -65,8 +65,9 @@ entrypoint.sh:
 python manage.py makemigrations
 python manage.py migrate
 exec "$@"
+```
 docker-compose.yml (under 'web'):
-
+```
 entrypoint: /entrypoint.sh
 ```
 In this scenario, when the container starts, the entrypoint script will run, handle your migration, then hand off to the command (which in this case is Django runserver).
