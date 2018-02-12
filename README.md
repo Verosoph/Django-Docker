@@ -72,4 +72,38 @@ entrypoint: /entrypoint.sh
 ```
 In this scenario, when the container starts, the entrypoint script will run, handle your migration, then hand off to the command (which in this case is Django runserver).
 
+## 6. Start the service automatically after server-reboot
 
+On the server in de directory 
+```
+cd /etc/systemd/system
+```
+create a file with free name an ends with .service
+
+```
+touch django_start.service
+```
+write the following commands into the new file
+```
+[Unit]
+Description=<free name>
+Requires=docker.service
+After=docker.service
+
+[Service]
+WorkingDirectory= <the app directory>   #like: /home/jow/projects/MyApp
+Type=oneshot
+RemainAfterExit=yes
+User=root
+
+ExecStart= <the directory where docker-compose is located> up -d     
+#like :/usr/bin/docker-compose up -d  (which docker-compose shows the directory)
+
+[Install]
+WantedBy=multi-user.target
+```
+
+And then you have to enable the service:
+```
+systemctl enable <name of the service>
+```
