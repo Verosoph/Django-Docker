@@ -74,7 +74,7 @@ In this scenario, when the container starts, the entrypoint script will run, han
 
 ## 6. Start the service automatically after server-reboot
 
-On the server in de directory 
+on the server in the directory 
 ```
 cd /etc/systemd/system
 ```
@@ -103,7 +103,7 @@ ExecStart= <the directory where docker-compose is located> up -d
 WantedBy=multi-user.target
 ```
 
-And then you have to enable the service:
+and then you have to enable the service:
 ```
 systemctl enable <name of the service>
 ```
